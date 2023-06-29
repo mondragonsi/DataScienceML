@@ -20,7 +20,11 @@ while row:
     row = cursor.fetchone()
 
 
+npedido = 2
+comida = 'pastel'
+bebida = 'suco'
+
 # Sample insert query
-count = cursor.execute("""INSERT INTO dbo.pedido (npedido, comida, bebida) VALUES (?,?,?)""",1, 'dogao','coca').rowcount
+count = cursor.execute("""INSERT INTO dbo.pedido (npedido, comida, bebida) VALUES (?,?,?)""",npedido, comida,bebida).rowcount
 cnxn.commit()
 print('Rows inserted: ' + str(count))
