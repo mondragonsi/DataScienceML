@@ -2,7 +2,7 @@ import pyodbc
 # Some other example server values are
 # server = 'localhost\sqlexpress' # for a named instance
 # server = 'myserver,port' # to specify an alternate port
-server = '192.168.3.113\LAB'
+server = '192.168.1.28\LAB'
 database = 'BotecoDBADB'
 username = 'python_user'
 password = '12345'
@@ -24,7 +24,13 @@ npedido = 2
 comida = 'pastel'
 bebida = 'suco'
 
-# Sample insert query
-count = cursor.execute("""INSERT INTO dbo.pedido (npedido, comida, bebida) VALUES (?,?,?)""",npedido, comida,bebida).rowcount
-cnxn.commit()
-print('Rows inserted: ' + str(count))
+for i in range(1,10):
+    npedido = i
+    comida = 'pastel' + str(i)
+    bebida = 'suco' + str(i)
+    count = cursor.execute("""INSERT INTO dbo.pedido (npedido, comida, bebida) VALUES (?,?,?)""",npedido, comida,bebida).rowcount
+    cnxn.commit()
+    print('Rows inserted: ' + str(count))
+
+
+cnxn.close()
