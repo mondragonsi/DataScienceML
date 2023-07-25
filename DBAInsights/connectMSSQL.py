@@ -2,7 +2,7 @@ import pyodbc
 # Some other example server values are
 # server = 'localhost\sqlexpress' # for a named instance
 # server = 'myserver,port' # to specify an alternate port
-server = '192.168.1.28\LAB'
+server = '192.168.1.30'
 database = 'BotecoDBADB'
 username = 'python_user'
 password = '12345'
@@ -31,6 +31,18 @@ for i in range(1,10):
     count = cursor.execute("""INSERT INTO dbo.pedido (npedido, comida, bebida) VALUES (?,?,?)""",npedido, comida,bebida).rowcount
     cnxn.commit()
     print('Rows inserted: ' + str(count))
+
+
+# Sample select query
+cursor.execute("SELECT * FROM sys.dm_os_waiting_tasks")
+row = cursor.fetchone()
+while row:
+    print(row)
+    row = cursor.fetchone()
+    
+    
+#query all drives from sql server instance
+
 
 
 cnxn.close()
