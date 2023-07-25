@@ -19,5 +19,7 @@ df = pd.read_sql_query(
     "SELECT session_id,wait_duration_ms,wait_type FROM sys.dm_os_waiting_tasks order by wait_duration_ms desc;", cnxn)
 print(df)
 print(df.describe())
+print(df.info())
+print(df.dtypes)
 
 cnxn.close()
